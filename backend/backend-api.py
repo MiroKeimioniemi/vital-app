@@ -55,25 +55,6 @@ def calculate_jump_height(current_jump_height, hr_zones: list, workout_durations
         return max(current_jump_height + 7 * (4 * TS - 1), 10)
     
 
-fitness_df = pd.read_csv('fitness.csv')
-fitness_df['avg_bpm'] = (fitness_df['bpm_low'] + fitness_df['bpm_low']) / 2
-avg_fitness_df = fitness_df.groupby('week').agg({
-    'bmi': 'mean',
-    'sleep': 'mean',
-    'sleep_score': 'mean',
-    'steps': 'mean',
-    'avg_bpm': 'mean'
-}).reset_index()
-
-workouts_df = pd.read_csv('workouts.csv')
-mapping = {1: 1, 2: 2, 3: 2, 4: 3, 5: 3}
-workouts_df['hr_zone'] = workouts_df['hr_zone'].map(mapping)
-avg_workouts_df = workouts_df.groupby('week').agg({
-    'duration': list,
-    'hr_zone': list,
-    'max_speed': list
-}).reset_index()
-
 def le_change(fitness_data, workout_data, current_le_change):
     light = 0
     moderate = 0
@@ -107,6 +88,25 @@ def stats_change(fitness_data, workout_data, current_speed, current_strength, cu
     jump_height = calculate_jump_height(current_jump_height, hr_zones, workout_durations)
     return round(speed, 2), round(strength, 2), round(health, 2), round(jump_height, 2)
 
+
+fitness_df = pd.read_csv('fitness.csv')
+fitness_df['avg_bpm'] = (fitness_df['bpm_low'] + fitness_df['bpm_low']) / 2
+avg_fitness_df = fitness_df.groupby('week').agg({
+    'bmi': 'mean',
+    'sleep': 'mean',
+    'sleep_score': 'mean',
+    'steps': 'mean',
+    'avg_bpm': 'mean'
+}).reset_index()
+
+workouts_df = pd.read_csv('workouts.csv')
+mapping = {1: 1, 2: 2, 3: 2, 4: 3, 5: 3}
+workouts_df['hr_zone'] = workouts_df['hr_zone'].map(mapping)
+avg_workouts_df = workouts_df.groupby('week').agg({
+    'duration': list,
+    'hr_zone': list,
+    'max_speed': list
+}).reset_index()
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     try:
