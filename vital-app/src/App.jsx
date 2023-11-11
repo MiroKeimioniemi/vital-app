@@ -12,6 +12,7 @@ import plusSign from './images/plus-sign.svg'
 import LeIncrease from './components/LeIncrease'
 import getData from './services/getData.js'
 import postData from './services/updateRoblox.js'
+import StatsCard from './components/StatsCard';
 
 
 function App() {
@@ -21,12 +22,12 @@ function App() {
   };
 
   const avatars = [
-    new Avatar("Add Friend", plusSign, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-    new Avatar("Samantha", friendBitmoji, 1, 10, 10, 10, 10, 0, 0, 0, 0, 21.7),
-    new Avatar("Jacob", bitmojiAvatar, 1, 10, 10, 10, 10, 0, 0, 0, 0, 21.7),
-    new Avatar("J4c0b (Roblox)", robloxAvatar, 1, 10, 10, 10, 10, 0, 0, 0, 0, 21.7),
-    new Avatar("Jac0b (Minecraft)", minecraftAvatar, 1, 10, 10, 10, 10, 0, 0, 0, 0, 21.7),
-    new Avatar("Add Avatar", plusSign, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    new Avatar("Add Friend", plusSign, true),
+    new Avatar("Samantha", friendBitmoji, true, 1, 10, 10, 10, 10, 0, 0, 0, 0, 21.7),
+    new Avatar("Jacob", bitmojiAvatar, true, 1, 10, 10, 10, 10, 0, 0, 0, 0, 21.7),
+    new Avatar("J4c0b (Roblox)", robloxAvatar, false, 1, 10, 10, 10, 10, 0, 0, 0, 0, 21.7),
+    new Avatar("Jac0b (Minecraft)", minecraftAvatar, false, 1, 10, 10, 10, 10, 0, 0, 0, 0, 21.7),
+    new Avatar("Add Avatar", plusSign, false)
   ]
 
   const [count, setCount] = useState(1)
@@ -89,8 +90,9 @@ function App() {
     <>
       <h1>Week {count}</h1>
       <button onClick={() => { if (count <= 3) { handleButtonClick() } }}>Next Week</button>
-      <LeIncrease value={1.3733141} />
+      <LeIncrease value={1.373} />
       <Carousel avatars={avatars} selected={selectedItem} onCarouselChange={handleCarouselChange} />
+      <StatsCard avatar={avatars[selectedItem]} />
     </>
   )
 }

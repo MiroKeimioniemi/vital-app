@@ -1,7 +1,8 @@
 class Avatar {
-    constructor(name, image, level, health, strength, speed, jumpHeight, lifeExpectancy, totalSteps, totalExercise, maxSpeed, BMI) {
+    constructor(name, image, nativeAvatar, level, health, strength, speed, jumpHeight, lifeExpectancy, totalSteps, totalExercise, maxSpeed, bmi) {
       this.name = name;
       this.image = image;
+      this.nativeAvatar = nativeAvatar;
       this.level = level;
       this.health = health;
       this.strength = strength;
@@ -11,7 +12,7 @@ class Avatar {
       this.totalSteps = totalSteps;
       this.totalExercise = totalExercise;
       this.maxSpeed = maxSpeed;
-      this.BMI = BMI;
+      this.bmi = bmi;
     }
 }
 
