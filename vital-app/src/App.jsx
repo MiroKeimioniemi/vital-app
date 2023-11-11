@@ -15,6 +15,22 @@ import postData from './services/updateRoblox.js'
 
 
 function App() {
+  const [selectedItem, setSelectedItem] = useState(2);
+  const handleCarouselChange = (index) => {
+    setSelectedItem(index);
+  };
+
+
+
+  const avatars = [
+    new Avatar("Add Friend", plusSign, 0, 0, 0, 0, 0),
+    new Avatar("Samantha", friendBitmoji, 0, 10, 10, 10, 10),
+    new Avatar("Jacob", bitmojiAvatar, 0, 10, 10, 10, 10),
+    new Avatar("J4c0b (Roblox)", robloxAvatar, 0, 10, 10, 10, 10),
+    new Avatar("Jac0b (Minecraft)", minecraftAvatar, 0, 10, 10, 10, 10),
+    new Avatar("Add Avatar", plusSign, 0, 0, 0, 0, 0)
+  ]
+
   const [count, setCount] = useState(1)
 
   const [lE, setlE] = useState([0, 0, 0]) // year month day
@@ -22,6 +38,7 @@ function App() {
   const [speed, setSpeed] = useState(10)
   const [strength, setStrength] = useState(10)
   const [jump_height, setJumpHeight] = useState(10)
+
 
   useEffect(() => {
     const robloxData = {
@@ -35,16 +52,6 @@ function App() {
       console.log(data)
     })
   }, [])
-
-  const avatars = [
-    new Avatar("Add Friend", plusSign, 0, 0, 0, 0, 0),
-    new Avatar("Samantha", friendBitmoji, 0, 10, 10, 10, 10),
-    new Avatar("Jacob", bitmojiAvatar, 0, 10, 10, 10, 10),
-    new Avatar("J4c0b (Roblox)", robloxAvatar, 0, 10, 10, 10, 10),
-    new Avatar("Jac0b (Minecraft)", minecraftAvatar, 0, 10, 10, 10, 10),
-    new Avatar("Add Avatar", plusSign, 0, 0, 0, 0, 0)
-  ]
-
 
   const handleButtonClick = () => {
     const prevInfo = {
@@ -85,7 +92,7 @@ function App() {
       <h1>Week {count}</h1>
       <button onClick={() => { if (count <= 3) { handleButtonClick() } }}>Next Week</button>
       <LeIncrease value={1.3733141} />
-      <Carousel avatars={avatars} />
+      <Carousel avatars={avatars} selected={selectedItem} onCarouselChange={handleCarouselChange} />
     </>
   )
 }
