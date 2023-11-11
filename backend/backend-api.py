@@ -89,7 +89,7 @@ def stats_change(fitness_data, workout_data, current_speed, current_strength, cu
     return round(speed, 2), round(strength, 2), round(health, 2), round(jump_height, 2)
 
 
-fitness_df = pd.read_csv('fitness.csv')
+fitness_df = pd.read_csv('https://rgoccdetstorage.blob.core.windows.net/jc2023/fitness.csv')
 fitness_df['avg_bpm'] = (fitness_df['bpm_low'] + fitness_df['bpm_low']) / 2
 avg_fitness_df = fitness_df.groupby('week').agg({
     'bmi': 'mean',
@@ -99,7 +99,7 @@ avg_fitness_df = fitness_df.groupby('week').agg({
     'avg_bpm': 'mean'
 }).reset_index()
 
-workouts_df = pd.read_csv('workouts.csv')
+workouts_df = pd.read_csv('https://rgoccdetstorage.blob.core.windows.net/jc2023/workouts.csv')
 mapping = {1: 1, 2: 2, 3: 2, 4: 3, 5: 3}
 workouts_df['hr_zone'] = workouts_df['hr_zone'].map(mapping)
 avg_workouts_df = workouts_df.groupby('week').agg({
@@ -109,33 +109,39 @@ avg_workouts_df = workouts_df.groupby('week').agg({
 }).reset_index()
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
-    try:
-        req_body = req.get_json()
-        week = req_body.get('week')
-        current_le_change = req_body.get('current_le_change')
-        current_speed = req_body.get('current_speed')
-        current_strength = req_body.get('current_strength')
-        current_health = req_body.get('current_health')
-        current_jump_height = req_body.get('current_jump_height')
+    req_body = req.get_json()
+    week = req_body.get('week')
+    current_le_change = req_body.get('current_le_change')
+    current_speed = req_body.get('current_speed')
+    current_strength = req_body.get('current_strength')
+    current_health = req_body.get('current_health')
+    current_jump_height = req_body.get('current_jump_height')
 
-        if not all([week, current_le_change, current_speed, current_strength, current_health, current_jump_height]):
-            error_message = {"error": "One or more required fields are missing in the request."}
-            return func.HttpResponse(json.dumps(error_message), status_code=400, mimetype="application/json")
+    '''if not all([week, current_le_change, current_speed, current_strength, current_health, current_jump_height]):
+        error_message = {"error": "One or more required fields are missing in the request."}
+        return func.HttpResponse(json.dumps(error_message), status_code=400, mimetype="application/json")'''
 
-        fitness_week_df = avg_fitness_df[avg_fitness_df['week'] == week]
-        workouts_week_df = avg_workouts_df[avg_workouts_df['week'] == week]
-        years, months, days = le_change(fitness_week_df, workouts_week_df, current_le_change.years + current_le_change.months / 12 + current_le_change.days / 365)
-        speed, strength, health, jump_height = stats_change(fitness_week_df, workouts_week_df, current_speed, current_strength, current_health, current_jump_height)
+    fitness_week_df = fitness_df[fitness_df['week'] == week]
+    workouts_week_df = workouts_df[workouts_df['week'] == week]
 
-        response_data = {"life_expectancy": {"years": years, "months": months, "days": days},
-                         "stats": {"speed": speed, "strength": strength, "health": health, "jump_height": jump_height}}
-        response_json = json.dumps(response_data)
+    avg_fitness_week_df = avg_fitness_df[avg_fitness_df['week'] == week]
+    avg_workouts_week_df = avg_workouts_df[avg_workouts_df['week'] == week]
 
-        return func.HttpResponse(response_json, mimetype="application/json")
+    years, months, days = le_change(avg_fitness_week_df, avg_workouts_week_df, current_le_change)
+    speed, strength, health, jump_height = stats_change(avg_fitness_week_df, avg_workouts_week_df, current_speed, current_strength, current_health, current_jump_height)
 
-    except ValueError as e:
-        error_message = {"error": "Error decoding JSON in the request body."}
-        return func.HttpResponse(json.dumps(error_message), status_code=400, mimetype="application/json")
-    except Exception as e:
-        error_message = {"error": "An unexpected error occurred."}
-        return func.HttpResponse(json.dumps(error_message), status_code=500, mimetype="application/json")
+    total_steps = math.ceil(fitness_week_df['steps'].sum())
+    total_workouts = 0
+    if not workouts_week_df.empty:
+        total_workouts = math.ceil(workouts_week_df['duration'].sum() / 60)
+    max_speed = 0
+    if not avg_workouts_df.empty:
+        max_speed = math.ceil(max([max(speed_list) for speed_list in avg_workouts_df['max_speed']]))
+    bmi = math.ceil(fitness_week_df['bmi'].mean())
+
+    response_data = {"life_expectancy": {"years": years, "months": months, "days": days},
+                    "health_stats": {"total_steps": total_steps, "total_workouts": total_workouts, "max_speed": max_speed, "bmi": bmi},
+                    "game_stats": {"speed": speed, "strength": strength, "health": health, "jump_height": jump_height}}
+    response_json = json.dumps(response_data)
+
+    return func.HttpResponse(response_json, mimetype="application/json")
