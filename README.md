@@ -1,1 +1,1 @@
-# junction-huawei-challenge
+# junction-huawei-challenge - vital app
