@@ -1,0 +1,12 @@
+﻿week,day,type,duration,hr_zone,max_speed
+1,2,running,65,2,11.1
+2,3,walking,36,1,8.1
+2,4,running,20,4,9.4
+2,5,walking,23,1,6.5
+2,7,running,57,2,10.4
+3,1,running,24,4,8.5
+3,3,walking,47,1,6.4
+3,4,walking,21,1,9.7
+3,5,basketball,112,3,
+4,2,running,32,5,10.8
+4,7,walking,53,1,7.1
