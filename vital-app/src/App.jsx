@@ -10,6 +10,7 @@ import friendBitmoji from './images/friend-bitmoji.jpeg';
 import robloxAvatar from './images/roblox-avatar.png';
 import minecraftAvatar from './images/minecraft-avatar.jpg';
 import plusSign from './images/plus-sign.svg'
+import LeIncrease from './components/LeIncrease'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,18 +25,10 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+      <LeIncrease value={1.3733141} />
       <Carousel avatars={avatars} />
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+      {/* <div className="card"> */}
+        {/* <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
         <p>
@@ -44,7 +37,7 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p>
+      </p> */}
     </>
   )
 }
