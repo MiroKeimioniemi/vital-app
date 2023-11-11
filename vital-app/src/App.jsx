@@ -66,19 +66,19 @@ function App() {
     console.log(prevInfo)
     getData(prevInfo).then((data) => {
       setlE([data.life_expectancy.years, data.life_expectancy.months, data.life_expectancy.days])
-      setSpeed(data.stats.speed)
-      setStrength(data.stats.strength)
-      setHealth(data.stats.health)
-      setJumpHeight(data.stats.jump_height)
-      avatars[3] = new Avatar("J4c0b (Roblox)", robloxAvatar, data.life_expectancy.years + data.life_expectancy.months / 12 + data.life_expectancy.days / 365, data.stats.health, data.stats.strength, data.stats.speed, data.stats.jump_height)
+      setSpeed(data.game_stats.speed)
+      setStrength(data.game_stats.strength)
+      setHealth(data.game_stats.health)
+      setJumpHeight(data.game_stats.jump_height)
+      avatars[3] = new Avatar("J4c0b (Roblox)", robloxAvatar, data.life_expectancy.years + data.life_expectancy.months / 12 + data.life_expectancy.days / 365, data.game_stats.health, data.game_stats.strength, data.game_stats.speed, data.game_stats.jump_height)
       setCount((count) => count < 4 ? count + 1 : count)
       console.log("Data Recieved")
       console.log(data)
       const robloxData = {
-        "speed": data.stats.speed,
-        "jump": data.stats.jump_height,
-        "health": data.stats.health,
-        "strength": data.stats.strength
+        "speed": data.game_stats.speed,
+        "jump": data.game_stats.jump_height,
+        "health": data.game_stats.health,
+        "strength": data.game_stats.strength
       }
       postData(robloxData).then((data) => {
         console.log("Roblox server response:")
