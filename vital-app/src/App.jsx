@@ -11,6 +11,7 @@ import minecraftAvatar from './images/minecraft-avatar.jpg';
 import plusSign from './images/plus-sign.svg'
 import LeIncrease from './components/LeIncrease'
 import getData from './services/getData.js'
+import postData from './services/updateRoblox.js'
 
 
 function App() {
@@ -31,8 +32,8 @@ function App() {
     new Avatar("Add Avatar", plusSign, 0, 0, 0, 0, 0)
   ]
 
+
   const handleButtonClick = () => {
-    setCount((count) => count < 4 ? count + 1 : count)
     const prevInfo = {
       "week": count,
       "current_le_change": { "years": lE[0], "months": lE[1], "days": lE[2] },
@@ -42,11 +43,23 @@ function App() {
       current_jump_height: jump_height
     }
     getData(prevInfo).then((data) => {
+
       setlE([data.life_expectancy.years, data.life_expectancy.months, data.life_expectancy.days])
       setSpeed(data.stats.speed)
       setStrength(data.stats.strength)
       setHealth(data.stats.health)
       setJumpHeight(data.stats.jump_height)
+      avatars[3] = new Avatar("J4c0b (Roblox)", robloxAvatar, data.life_expectancy.years + data.life_expectancy.months / 12 + data.life_expectancy.days / 365, data.stats.health, data.stats.strength, data.stats.speed, data.stats.jump_height)
+      setCount((count) => count < 4 ? count + 1 : count)
+      const robloxData = {
+        "speed": speed,
+        "jump": jump_height,
+        "health": health,
+        "strength": strength
+      }
+      postData(robloxData).then((data) => {
+        console.log(data)
+      })
     })
   }
 
