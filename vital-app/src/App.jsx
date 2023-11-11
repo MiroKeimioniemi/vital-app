@@ -20,15 +20,13 @@ function App() {
     setSelectedItem(index);
   };
 
-
-
   const avatars = [
-    new Avatar("Add Friend", plusSign, 0, 0, 0, 0, 0),
-    new Avatar("Samantha", friendBitmoji, 0, 10, 10, 10, 10),
-    new Avatar("Jacob", bitmojiAvatar, 0, 10, 10, 10, 10),
-    new Avatar("J4c0b (Roblox)", robloxAvatar, 0, 10, 10, 10, 10),
-    new Avatar("Jac0b (Minecraft)", minecraftAvatar, 0, 10, 10, 10, 10),
-    new Avatar("Add Avatar", plusSign, 0, 0, 0, 0, 0)
+    new Avatar("Add Friend", plusSign, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+    new Avatar("Samantha", friendBitmoji, 1, 10, 10, 10, 10, 0, 0, 0, 0, 21.7),
+    new Avatar("Jacob", bitmojiAvatar, 1, 10, 10, 10, 10, 0, 0, 0, 0, 21.7),
+    new Avatar("J4c0b (Roblox)", robloxAvatar, 1, 10, 10, 10, 10, 0, 0, 0, 0, 21.7),
+    new Avatar("Jac0b (Minecraft)", minecraftAvatar, 1, 10, 10, 10, 10, 0, 0, 0, 0, 21.7),
+    new Avatar("Add Avatar", plusSign, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
   ]
 
   const [count, setCount] = useState(1)
