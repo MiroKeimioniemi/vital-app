@@ -17,11 +17,11 @@ const Carousel = ({ avatars }) => {
     return (
       <div className="carousel">
         <Slider {...settings}>
-          {avatars.map(([image, caption], index) => (
+          {avatars.map((avatar, index) => (
             <div key={index}>
-              <h2>{caption}</h2>
+              <h2>{avatar.name}</h2>
               <div className="carousel-image">
-                <img src={image} alt={`Slide ${index + 1}`} />
+                <img src={avatar.image} alt={`Slide ${index + 1}`} />
               </div>
             </div>
           ))}

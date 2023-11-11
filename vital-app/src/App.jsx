@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 import Carousel from './components/Carousel.jsx'
+import Avatar from './classes/avatar.js'
 
 import bitmojiAvatar from './images/bitmoji-avatar.png';
 import friendBitmoji from './images/friend-bitmoji.jpeg';
@@ -13,31 +14,19 @@ import plusSign from './images/plus-sign.svg'
 import LeIncrease from './components/LeIncrease'
 
 function App() {
-  const [count, setCount] = useState(0)
   const avatars = [
-    [plusSign, "Add Friend"],
-    [friendBitmoji, "Samantha"],
-    [bitmojiAvatar, "Jacob"],
-    [robloxAvatar, "J4c0b (Roblox)"],
-    [minecraftAvatar, "Jac0b (Minecraft)"],
-    [plusSign, "Add avatar"]
+    new Avatar("Add Friend", plusSign, 0, 0, 0, 0, 0),
+    new Avatar("Samantha", friendBitmoji, 0, 10, 10, 10, 10),
+    new Avatar("Jacob", bitmojiAvatar, 0, 10, 10, 10, 10),
+    new Avatar("J4c0b (Roblox)", robloxAvatar, 0, 10, 10, 10, 10),
+    new Avatar("Jac0b (Minecraft)", minecraftAvatar, 0, 10, 10, 10, 10),
+    new Avatar("Add Avatar", plusSign, 0, 0, 0, 0, 0)
   ]
 
   return (
     <>
       <LeIncrease value={1.3733141} />
       <Carousel avatars={avatars} />
-      {/* <div className="card"> */}
-        {/* <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
     </>
   )
 }
