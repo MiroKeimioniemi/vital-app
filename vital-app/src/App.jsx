@@ -36,14 +36,15 @@ function App() {
   const handleButtonClick = () => {
     const prevInfo = {
       "week": count,
-      "current_le_change": { "years": lE[0], "months": lE[1], "days": lE[2] },
+      "current_le_change": lE[0] + lE[1] / 12 + lE[2] / 365,
       "current_speed": speed,
       current_strength: strength,
       current_health: health,
       current_jump_height: jump_height
     }
+    console.log("Post Request Data Sent: ")
+    console.log(prevInfo)
     getData(prevInfo).then((data) => {
-
       setlE([data.life_expectancy.years, data.life_expectancy.months, data.life_expectancy.days])
       setSpeed(data.stats.speed)
       setStrength(data.stats.strength)
@@ -51,13 +52,16 @@ function App() {
       setJumpHeight(data.stats.jump_height)
       avatars[3] = new Avatar("J4c0b (Roblox)", robloxAvatar, data.life_expectancy.years + data.life_expectancy.months / 12 + data.life_expectancy.days / 365, data.stats.health, data.stats.strength, data.stats.speed, data.stats.jump_height)
       setCount((count) => count < 4 ? count + 1 : count)
+      console.log("Data Recieved")
+      console.log(data)
       const robloxData = {
-        "speed": speed,
-        "jump": jump_height,
-        "health": health,
-        "strength": strength
+        "speed": data.stats.speed,
+        "jump": data.stats,
+        "health": data.stats.health,
+        "strength": data.stats.strength
       }
       postData(robloxData).then((data) => {
+        console.log("Roblox server response:")
         console.log(data)
       })
     })
@@ -66,7 +70,7 @@ function App() {
   return (
     <>
       <h1>Week {count}</h1>
-      <button onClick={() => handleButtonClick()}>Next Week</button>
+      <button onClick={() => { if (count <= 3) { handleButtonClick() } }}>Next Week</button>
       <LeIncrease value={1.3733141} />
       <Carousel avatars={avatars} />
     </>
