@@ -13,14 +13,9 @@ const Carousel = ({ avatars, selected, onCarouselChange }) => {
     slidesToScroll: 1,
     initialSlide: selected,
     afterChange: (index) => {
-      // Call the callback function to update the selected item in the parent
       onCarouselChange(index);
     },
   };
-
-  useEffect(() => {
-    console.log("Selected prop:", selected);
-  }, [selected]);
 
   return (
     <div className="carousel">

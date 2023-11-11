@@ -3,6 +3,7 @@ import './App.css'
 
 import Carousel from './components/Carousel.jsx'
 import Avatar from './classes/avatar.js'
+import { AiFillForward } from "react-icons/ai";
 
 import bitmojiAvatar from './images/bitmoji-avatar.png';
 import friendBitmoji from './images/friend-bitmoji.jpeg';
@@ -88,11 +89,13 @@ function App() {
 
   return (
     <>
-      <h1>Week {count}</h1>
-      <button onClick={() => { if (count <= 3) { handleButtonClick() } }}>Next Week</button>
       <LeIncrease years={2} months={5} days={26} />
       <Carousel avatars={avatars} selected={selectedItem} onCarouselChange={handleCarouselChange} />
       <StatsCard avatar={avatars[selectedItem]} />
+      <div style={{display: 'flex', alignItems: 'center', marginTop: '0'}}>
+        <p style={{marginRight: '8px'}}>Week {count}</p>
+        <AiFillForward onClick={() => { if (count <= 3) { handleButtonClick() } }}/>
+      </div>
     </>
   )
 }
