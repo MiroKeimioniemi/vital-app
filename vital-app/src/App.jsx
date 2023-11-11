@@ -14,6 +14,14 @@ import plusSign from './images/plus-sign.svg'
 import LeIncrease from './components/LeIncrease'
 
 function App() {
+
+  const [selectedItem, setSelectedItem] = useState(2);  
+  const handleCarouselChange = (index) => {
+    setSelectedItem(index);
+  };
+
+  console.log(selectedItem);
+
   const avatars = [
     new Avatar("Add Friend", plusSign, 0, 0, 0, 0, 0),
     new Avatar("Samantha", friendBitmoji, 0, 10, 10, 10, 10),
@@ -26,7 +34,7 @@ function App() {
   return (
     <>
       <LeIncrease value={1.3733141} />
-      <Carousel avatars={avatars} />
+      <Carousel avatars={avatars} selected={selectedItem} onCarouselChange={handleCarouselChange} />
     </>
   )
 }
