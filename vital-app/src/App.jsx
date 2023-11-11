@@ -90,7 +90,7 @@ function App() {
     <>
       <h1>Week {count}</h1>
       <button onClick={() => { if (count <= 3) { handleButtonClick() } }}>Next Week</button>
-      <LeIncrease value={1.373} />
+      <LeIncrease years={2} months={5} days={26} />
       <Carousel avatars={avatars} selected={selectedItem} onCarouselChange={handleCarouselChange} />
       <StatsCard avatar={avatars[selectedItem]} />
     </>
