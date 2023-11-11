@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 import Carousel from './components/Carousel.jsx'
@@ -12,8 +10,18 @@ import robloxAvatar from './images/roblox-avatar.png';
 import minecraftAvatar from './images/minecraft-avatar.jpg';
 import plusSign from './images/plus-sign.svg'
 import LeIncrease from './components/LeIncrease'
+import getData from './services/getData.js'
+
 
 function App() {
+  const [count, setCount] = useState(1)
+
+  const [lE, setlE] = useState([0, 0, 0]) // year month day
+  const [health, setHealth] = useState(10)
+  const [speed, setSpeed] = useState(10)
+  const [strength, setStrength] = useState(10)
+  const [jump_height, setJumpHeight] = useState(10)
+
   const avatars = [
     new Avatar("Add Friend", plusSign, 0, 0, 0, 0, 0),
     new Avatar("Samantha", friendBitmoji, 0, 10, 10, 10, 10),
@@ -23,8 +31,29 @@ function App() {
     new Avatar("Add Avatar", plusSign, 0, 0, 0, 0, 0)
   ]
 
+  const handleButtonClick = () => {
+    setCount((count) => count < 4 ? count + 1 : count)
+    const prevInfo = {
+      "week": count,
+      "current_le_change": { "years": lE[0], "months": lE[1], "days": lE[2] },
+      "current_speed": speed,
+      current_strength: strength,
+      current_health: health,
+      current_jump_height: jump_height
+    }
+    getData(prevInfo).then((data) => {
+      setlE([data.life_expectancy.years, data.life_expectancy.months, data.life_expectancy.days])
+      setSpeed(data.stats.speed)
+      setStrength(data.stats.strength)
+      setHealth(data.stats.health)
+      setJumpHeight(data.stats.jump_height)
+    })
+  }
+
   return (
     <>
+      <h1>Week {count}</h1>
+      <button onClick={() => handleButtonClick()}>Next Week</button>
       <LeIncrease value={1.3733141} />
       <Carousel avatars={avatars} />
     </>
