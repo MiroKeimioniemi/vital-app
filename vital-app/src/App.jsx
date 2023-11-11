@@ -13,13 +13,13 @@ import plusSign from './images/plus-sign.svg'
 
 function App() {
   const [count, setCount] = useState(0)
-  const avatarImages = [
-    plusSign,
-    friendBitmoji,
-    bitmojiAvatar,
-    robloxAvatar,
-    minecraftAvatar,
-    plusSign
+  const avatars = [
+    [plusSign, "Add Friend"],
+    [friendBitmoji, "Samantha"],
+    [bitmojiAvatar, "Jacob"],
+    [robloxAvatar, "J4c0b (Roblox)"],
+    [minecraftAvatar, "Jac0b (Minecraft)"],
+    [plusSign, "Add avatar"]
   ]
 
   return (
@@ -33,7 +33,7 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <Carousel images={avatarImages} />
+      <Carousel avatars={avatars} />
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
