@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 import Carousel from './components/Carousel.jsx'
@@ -22,6 +22,19 @@ function App() {
   const [speed, setSpeed] = useState(10)
   const [strength, setStrength] = useState(10)
   const [jump_height, setJumpHeight] = useState(10)
+
+  useEffect(() => {
+    const robloxData = {
+      "speed": speed,
+      "jump": jump_height,
+      "health": health,
+      "strength": strength
+    }
+    postData(robloxData).then((data) => {
+      console.log("Roblox server response:")
+      console.log(data)
+    })
+  }, [])
 
   const avatars = [
     new Avatar("Add Friend", plusSign, 0, 0, 0, 0, 0),
@@ -56,7 +69,7 @@ function App() {
       console.log(data)
       const robloxData = {
         "speed": data.stats.speed,
-        "jump": data.stats,
+        "jump": data.stats.jump_height,
         "health": data.stats.health,
         "strength": data.stats.strength
       }
