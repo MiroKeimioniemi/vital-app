@@ -2,18 +2,20 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import '../stylesheets/Carousel.css';
 
-const SwipeableCarousel = ({ images }) => {
+const Carousel = ({ images }) => {
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    initialSlide: Math.floor(images.length / 2),
   };
 
   return (
-    <div className="swipeable-carousel">
+    <div className="carousel">
       <Slider {...settings}>
         {images.map((image, index) => (
           <div key={index} className="carousel-item">
@@ -25,4 +27,4 @@ const SwipeableCarousel = ({ images }) => {
   );
 };
 
-export default SwipeableCarousel;
+export default Carousel;

@@ -2,11 +2,25 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import ImageCarousel from './components/Carousel.jsx'
+
+import Carousel from './components/Carousel.jsx'
+
+import bitmojiAvatar from './images/bitmoji-avatar.png';
+import friendBitmoji from './images/friend-bitmoji.jpeg';
+import robloxAvatar from './images/roblox-avatar.png';
+import minecraftAvatar from './images/minecraft-avatar.jpg';
+import plusSign from './images/plus-sign.svg'
 
 function App() {
   const [count, setCount] = useState(0)
-  const images = []
+  const avatarImages = [
+    plusSign,
+    friendBitmoji,
+    bitmojiAvatar,
+    robloxAvatar,
+    minecraftAvatar,
+    plusSign
+  ]
 
   return (
     <>
@@ -19,7 +33,7 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <ImageCarousel images={images} />
+      <Carousel images={avatarImages} />
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
