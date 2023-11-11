@@ -19,7 +19,7 @@ function App() {
   const handleCarouselChange = (index) => {
     setSelectedItem(index);
   };
-  
+
   const avatars = [
     new Avatar("Add Friend", plusSign, 0, 0, 0, 0, 0),
     new Avatar("Samantha", friendBitmoji, 0, 10, 10, 10, 10),
@@ -60,7 +60,7 @@ function App() {
       console.log(data)
       const robloxData = {
         "speed": data.stats.speed,
-        "jump": data.stats,
+        "jump": data.stats.speed,
         "health": data.stats.health,
         "strength": data.stats.strength
       }
