@@ -4,11 +4,11 @@
 
 The issue with most attempts at gamifying exercise is that they stop working when people get bored of the gameplay. And still, many popular videogames are often very repetitive as well. Vital puts the game first by enabling you to play already established platform games such as Roblox in a whole new way, where the grind in front of a screen is replaced by real exercise. Different types of exercise will improve different attributes of your avatar, allowing you to always return to the game with a stronger, leveled up character simultaneously improving your physical health as well as gameplay. Vital caters for older audiences as well in the form of competing against your past self as well as against your friends' avatars. 
 
-### Web Application
+#### Web Application
 
 The web application is currently deployed at [https://vital-app.onrender.com/](https://vital-app.onrender.com/).
 
-### Roblox Game
+#### Roblox Game
 
 The proof of concept Roblox game can be played at *insert link here*.
 
