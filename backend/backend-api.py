@@ -135,8 +135,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     if not workouts_week_df.empty:
         total_workouts = math.ceil(workouts_week_df['duration'].sum() / 60)
     max_speed = 0
-    if not avg_workouts_df.empty:
-        max_speed = math.ceil(max([max(speed_list) for speed_list in avg_workouts_df['max_speed']]))
+    if not avg_workouts_week_df.empty:
+        max_speed = math.ceil(max([max(speed_list) for speed_list in avg_workouts_week_df['max_speed']]))
     bmi = math.ceil(fitness_week_df['bmi'].mean())
 
     response_data = {"life_expectancy": {"years": years, "months": months, "days": days},
