@@ -1,8 +1,14 @@
   .stats-card {
-    margin-top: 40px;
+    margin-top: 10px;
+    margin-bottom: 40px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
+  }
+
+  .stats-item {
+    margin-top: 20px;
+    margin-bottom: -30px;
   }
 
   .attribute {
