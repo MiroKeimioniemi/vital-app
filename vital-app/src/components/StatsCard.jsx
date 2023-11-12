@@ -1,6 +1,8 @@
 import React from 'react';
 import InfoButton from './InfoButton';
 
+import '../stylesheets/StatsCard.css';
+
 const StatsCard = ({ avatar }) => {
 
     let values = []
@@ -14,9 +16,11 @@ const StatsCard = ({ avatar }) => {
     <div className="stats-card">
       {values.map(([attribute, value], index) => (
         <div key={index} className="stats-item">
-          <h3>{attribute}</h3>
-          <p>{value}</p>
-          <InfoButton message={"hellou"} corner={1} />
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '-20px'}}>
+                <h3 className="attribute">{attribute}</h3>
+                <InfoButton message={"hellou"} corner={index + 1} />
+            </div>
+            <p className='value'>{value}</p>
         </div>
       ))}
     </div>
