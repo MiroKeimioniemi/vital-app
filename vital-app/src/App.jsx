@@ -5,9 +5,9 @@ import Carousel from './components/Carousel.jsx'
 import { AiFillForward } from "react-icons/ai";
 
 import bitmojiAvatar from './images/bitmoji-avatar.png';
-import friendBitmoji from './images/friend-bitmoji.jpeg';
+import friendBitmoji from './images/friend-bitmoji.png';
 // import robloxAvatar from './images/roblox-avatar.png';
-import minecraftAvatar from './images/minecraft-avatar.jpg';
+import minecraftAvatar from './images/minecraft-avatar.png';
 import plusSign from './images/plus-sign.svg'
 import LeIncrease from './components/LeIncrease'
 import getData from './services/getData.js'
@@ -25,12 +25,12 @@ function App() {
   };
 
   const initialAvatars = [
-    {name: "Add Friend", image: plusSign, nativeAvatar: true, level: '-', health: '-', strength: '-', speed: '-', jumpHeight: '-', lifeExpectancy: [0, 0, 0], totalSteps: '-', totalExercise: '-', maxSpeed: '-', bmi: '-'},
-    {name: "Samantha", image: friendBitmoji, nativeAvatar: true, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [8, 5, 23], totalSteps: 249485, totalExercise: 2304, maxSpeed: 28, bmi: 21},
-    {name: "Jacob", image: bitmojiAvatar, nativeAvatar: true, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: '-', bmi: '-'},
-    {name: "J4c0b (Roblox)", image: avatar1, nativeAvatar: false, level: 10, health: 10, strength: 10, speed: 10, jumpHeight: 10, lifeExpectancy: [0, 0, 0], totalSteps: 10, totalExercise: 10, maxSpeed: 10, bmi: '-'},
-    {name: "Jac0b (Minecraft)", image: minecraftAvatar, nativeAvatar: false, level: 10, health: 10, strength: 10, speed: 10, jumpHeight: 10, lifeExpectancy: [0, 0, 0], totalSteps: 10, totalExercise: 10, maxSpeed: 10, bmi: '-'},
-    {name: "Add Friend", image: plusSign, nativeAvatar: false, level: '-', health: '-', strength: '-', speed: '-', jumpHeight: '-', lifeExpectancy: [0, 0, 0], totalSteps: '-', totalExercise: '-', maxSpeed: '-', bmi: '-'}
+    { name: "Add Friend", image: plusSign, nativeAvatar: true, level: '-', health: '-', strength: '-', speed: '-', jumpHeight: '-', lifeExpectancy: [0, 0, 0], totalSteps: '-', totalExercise: '-', maxSpeed: '-', bmi: '-' },
+    { name: "Samantha", image: friendBitmoji, nativeAvatar: true, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [8, 5, 23], totalSteps: 249485, totalExercise: 2304, maxSpeed: 28, bmi: 21 },
+    { name: "Jacob", image: bitmojiAvatar, nativeAvatar: true, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: '-', bmi: '-' },
+    { name: "J4c0b (Roblox)", image: avatar1, nativeAvatar: false, level: 10, health: 10, strength: 10, speed: 10, jumpHeight: 10, lifeExpectancy: [0, 0, 0], totalSteps: 10, totalExercise: 10, maxSpeed: 10, bmi: '-' },
+    { name: "Jac0b (Minecraft)", image: minecraftAvatar, nativeAvatar: false, level: 10, health: 10, strength: 10, speed: 10, jumpHeight: 10, lifeExpectancy: [0, 0, 0], totalSteps: 10, totalExercise: 10, maxSpeed: 10, bmi: '-' },
+    { name: "Add Friend", image: plusSign, nativeAvatar: false, level: '-', health: '-', strength: '-', speed: '-', jumpHeight: '-', lifeExpectancy: [0, 0, 0], totalSteps: '-', totalExercise: '-', maxSpeed: '-', bmi: '-' }
   ]
 
   const [count, setCount] = useState(1)
@@ -115,9 +115,9 @@ function App() {
       <LeIncrease years={avatars[selectedItem].lifeExpectancy[0]} months={avatars[selectedItem].lifeExpectancy[1]} days={avatars[selectedItem].lifeExpectancy[2]} />
       <Carousel avatars={avatars} selected={selectedItem} onCarouselChange={handleCarouselChange} />
       <StatsCard avatar={avatars[selectedItem]} />
-      <div style={{display: 'flex', alignItems: 'center', marginTop: '0', justifyContent: 'end', marginRight: '-20px'}}>
-        <p style={{marginRight: '8px'}}>Week {count}</p>
-        <AiFillForward onClick={() => { if (count <= 4) { handleButtonClick() } }}/>
+      <div style={{ display: 'flex', alignItems: 'center', marginTop: '0', justifyContent: 'end', marginRight: '-20px' }}>
+        <p style={{ marginRight: '8px' }}>Week {count}</p>
+        <AiFillForward onClick={() => { if (count <= 4) { handleButtonClick() } }} />
       </div>
     </>
   )
