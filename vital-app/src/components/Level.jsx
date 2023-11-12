@@ -11,8 +11,8 @@ const Level = ({ level }) => {
       }} 
     >
       <div style={{ marginRight: '0.5em' }}>
-        <p style={{ margin: 0, padding: 0 }}>Level</p> 
-        <h1 style={{ margin: 0, padding: 0}}>{level}</h1> 
+        <p style={{ margin: 0, padding: 0, color: '#FBFBFB' }}>Level</p> 
+        <h1 style={{ margin: 0, padding: 0}}>Level {level}</h1> 
       </div>
     </div> 
   ); 
