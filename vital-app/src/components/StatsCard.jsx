@@ -7,7 +7,7 @@ const StatsCard = ({ avatar }) => {
 
   let values = []
   if (avatar.nativeAvatar) {
-    values = [["Total Steps", avatar.totalSteps, "Cumulative number of steps over all time.", 2], ["Total Exercise", avatar.totalExercise, "Cumulative hours of exercise over all time.", 2], ["Max Speed", avatar.maxSpeed, "Maximum instantaneous sprint speed.", 2], ["BMI", avatar.bmi, "Latest body mass index measuring.", 2]]
+    values = [["Total Steps", avatar.totalSteps, "Cumulative number of steps over all time.", 2], ["Total Exercise", avatar.totalExercise, "Cumulative hours of exercise over all time.", 2], ["Max Speed", avatar.maxSpeed, "Maximum sprint speed in km/h.", 2], ["BMI", avatar.bmi, "Latest body mass index measuring in kg/m^2.", 2]]
   } else {
     values = [["Health", avatar.health, "Health attribute can be increased with sleep score.", 2], ["Speed", avatar.speed, "Speed attribute can be increased by cardio exercise.", 2], ["Strength", avatar.strength, "Strength can be increased by moderate exercise.", 2], ["Jump Height", avatar.jumpHeight, "Jump Height is increased by leg-intensive exercise.", 2]]
   }
