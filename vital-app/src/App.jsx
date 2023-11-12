@@ -21,9 +21,9 @@ import avatar3 from './images/avatar-3.gif'
 import avatar4 from './images/avatar-4.gif'
 
 function App() {
-  const [selectedItem, setSelectedItem] = useState(2);
+  const [selectedAvatar, setSelectedAvatar] = useState(2);
   const handleCarouselChange = (index) => {
-    setSelectedItem(index);
+    setSelectedAvatar(index);
   };
 
   const initialAvatars = [
@@ -32,7 +32,7 @@ function App() {
     { name: "Jacob", image: bitmojiAvatar, nativeAvatar: true, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: '-', bmi: '-' },
     { name: "J4c0b (Roblox)", image: avatar1, nativeAvatar: false, level: 1, health: 10, strength: 10, speed: 10, jumpHeight: 10, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: '-', bmi: '-' },
     { name: "Jac0b (Minecraft)", image: minecraftAvatar, nativeAvatar: false, level: 1, health: 10, strength: 10, speed: 10, jumpHeight: 10, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: '-', bmi: '-' },
-    { name: "Add Friend", image: plusSign, nativeAvatar: false, level: '-', health: '-', strength: '-', speed: '-', jumpHeight: '-', lifeExpectancy: [0, 0, 0], totalSteps: '-', totalExercise: '-', maxSpeed: '-', bmi: '-' }
+    { name: "Add Avatar", image: plusSign, nativeAvatar: false, level: '-', health: '-', strength: '-', speed: '-', jumpHeight: '-', lifeExpectancy: [0, 0, 0], totalSteps: '-', totalExercise: '-', maxSpeed: '-', bmi: '-' }
   ]
 
   const [count, setCount] = useState(1)
@@ -113,15 +113,14 @@ function App() {
     })
   }
 
-
   return (
     <>
-      {avatars[selectedItem].name != "Add Friend" ?
-        avatars[selectedItem].nativeAvatar ? <LeIncrease years={avatars[selectedItem].lifeExpectancy[0]} months={avatars[selectedItem].lifeExpectancy[1]} days={avatars[selectedItem].lifeExpectancy[2]} />
-          : <Level level={avatars[selectedItem].level} />
+      {avatars[selectedAvatar].name != "Add Friend" && avatars[selectedAvatar].name != "Add Avatar" ?
+        avatars[selectedAvatar].nativeAvatar ? <LeIncrease years={avatars[selectedAvatar].lifeExpectancy[0]} months={avatars[selectedAvatar].lifeExpectancy[1]} days={avatars[selectedAvatar].lifeExpectancy[2]} />
+          : <Level level={avatars[selectedAvatar].level} />
         : <PlaceHolder />}
-      <Carousel avatars={avatars} selected={selectedItem} onCarouselChange={handleCarouselChange} />
-      <StatsCard avatar={avatars[selectedItem]} />
+      <Carousel avatars={avatars} selected={selectedAvatar} onCarouselChange={handleCarouselChange} />
+      <StatsCard avatar={avatars[selectedAvatar]} />
       <div style={{ display: 'flex', alignItems: 'center', marginTop: '0', justifyContent: 'end', marginRight: '-20px' }}>
         <p style={{ marginRight: '8px' }}>Week {count}</p>
         <AiFillForward onClick={() => { if (count <= 4) { handleButtonClick() } }} />
