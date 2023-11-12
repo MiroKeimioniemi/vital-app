@@ -26,6 +26,8 @@ Vital consists of a web application, an API and a custom Roblox game as proof of
 
 ![image](https://github.com/MiroKeimioniemi/vital-app/assets/65757701/cafea448-7488-4015-b643-8af9ffaded58)
 
+The web application currently has a week indicator and forward button at the bottom right corner, which can be used to simulate the passing of weeks (up to 5) and associated improvement of attributes in an accelerated manner to view how the attributes, life expectancy and level increase with sustained effort over a period of four weeks.
+
 ## Running Locally
 
 The Vital app can be run locally following these steps:
