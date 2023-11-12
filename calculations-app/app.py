@@ -4,7 +4,7 @@ import pandas as pd
 from src.health_stats import le_change
 from src.game_stats import stats_change
 
-fitness_df = pd.read_csv('https://rgoccdetstorage.blob.core.windows.net/jc2023/fitness.csv')
+fitness_df = pd.read_csv('LINK_TO_DATA')
 fitness_df['avg_bpm'] = (fitness_df['bpm_low'] + fitness_df['bpm_low']) / 2
 avg_fitness_df = fitness_df.groupby('week').agg({
     'bmi': 'mean',
@@ -14,7 +14,7 @@ avg_fitness_df = fitness_df.groupby('week').agg({
     'avg_bpm': 'mean'
 }).reset_index()
 
-workouts_df = pd.read_csv('https://rgoccdetstorage.blob.core.windows.net/jc2023/workouts.csv')
+workouts_df = pd.read_csv('LINK_TO_DATA')
 mapping = {1: 1, 2: 2, 3: 2, 4: 3, 5: 3}
 workouts_df['hr_zone'] = workouts_df['hr_zone'].map(mapping)
 avg_workouts_df = workouts_df.groupby('week').agg({
