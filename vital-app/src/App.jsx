@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import './App.css'
 
 import Carousel from './components/Carousel.jsx'
-import Avatar from './classes/avatar.js'
 import { AiFillForward } from "react-icons/ai";
 
 import bitmojiAvatar from './images/bitmoji-avatar.png';
@@ -22,28 +21,28 @@ function App() {
     setSelectedItem(index);
   };
 
-  const avatars = [
-    new Avatar("Add Friend", plusSign, true),
-    new Avatar("Samantha", friendBitmoji, true, 1, 10, 10, 10, 10, 0, 0, 0, 0, 21.7),
-    new Avatar("Jacob", bitmojiAvatar, true, 1, 10, 10, 10, 10, 0, 0, 0, 0, 21.7),
-    new Avatar("J4c0b (Roblox)", robloxAvatar, false, 1, 10, 10, 10, 10, 0, 0, 0, 0, 21.7),
-    new Avatar("Jac0b (Minecraft)", minecraftAvatar, false, 1, 10, 10, 10, 10, 0, 0, 0, 0, 21.7),
-    new Avatar("Add Avatar", plusSign, false)
+  const initialAvatars = [
+    {name: "Add Friend", image: plusSign, nativeAvatar: true, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: 0, bmi: 0},
+    {name: "Samantha", image: friendBitmoji, nativeAvatar: true, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: 0, bmi: 0},
+    {name: "Jacob", image: bitmojiAvatar, nativeAvatar: true, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: 0, bmi: 0},
+    {name: "J4c0b (Roblox)", image: robloxAvatar, nativeAvatar: false, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: 0, bmi: 0},
+    {name: "Jac0b (Minecraft)", image: minecraftAvatar, nativeAvatar: false, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: 0, bmi: 0},
+    {name: "Add Friend", image: plusSign, nativeAvatar: false, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: 0, bmi: 0}
   ]
 
   const [count, setCount] = useState(1)
+  const [avatars, setAvatars] = useState(initialAvatars)
 
   const [lE, setlE] = useState([0, 0, 0]) // year month day
   const [health, setHealth] = useState(10)
   const [speed, setSpeed] = useState(10)
   const [strength, setStrength] = useState(10)
-  const [jump_height, setJumpHeight] = useState(10)
-
+  const [jumpHeight, setJumpHeight] = useState(10)
 
   useEffect(() => {
     const robloxData = {
       "speed": speed,
-      "jump": jump_height,
+      "jump": jumpHeight,
       "health": health,
       "strength": strength
     }
@@ -60,7 +59,7 @@ function App() {
       "current_speed": speed,
       current_strength: strength,
       current_health: health,
-      current_jump_height: jump_height
+      current_jump_height: jumpHeight
     }
     console.log("Post Request Data Sent: ")
     console.log(prevInfo)
@@ -70,9 +69,26 @@ function App() {
       setStrength(data.game_stats.strength)
       setHealth(data.game_stats.health)
       setJumpHeight(data.game_stats.jump_height)
-      avatars[3] = new Avatar("J4c0b (Roblox)", robloxAvatar, data.life_expectancy.years + data.life_expectancy.months / 12 + data.life_expectancy.days / 365, data.game_stats.health, data.game_stats.strength, data.game_stats.speed, data.game_stats.jump_height)
-      setCount((count) => count < 4 ? count + 1 : count)
-      console.log("Data Recieved")
+      const updatedAvatars = avatars.map((avatar, index) => {
+        if ([1, 2, 3, 4].includes(index)) {
+          return {
+            ...avatar,
+            health: data.game_stats.health,
+            strength: data.game_stats.strength,
+            speed: data.game_stats.speed,
+            jumpHeight: data.game_stats.jump_height,
+            lifeExpectancy: [data.life_expectancy.years, data.life_expectancy.months, data.life_expectancy.days],
+            totalSteps: data.health_stats.total_steps,
+            totalExercise: data.health_stats.total_workouts,
+            maxSpeed: data.health_stats.max_speed,
+            bmi: data.health_stats.bmi,
+          };
+        }
+        return avatar
+      })
+      setAvatars(updatedAvatars)
+      setCount((count) => count <= 4 ? count + 1 : count)
+      console.log("Data Received")
       console.log(data)
       const robloxData = {
         "speed": data.game_stats.speed,
@@ -89,12 +105,12 @@ function App() {
 
   return (
     <>
-      <LeIncrease years={2} months={5} days={26} />
+      <LeIncrease years={avatars[selectedItem].lifeExpectancy[0]} months={avatars[selectedItem].lifeExpectancy[1]} days={avatars[selectedItem].lifeExpectancy[2]} />
       <Carousel avatars={avatars} selected={selectedItem} onCarouselChange={handleCarouselChange} />
       <StatsCard avatar={avatars[selectedItem]} />
       <div style={{display: 'flex', alignItems: 'center', marginTop: '0'}}>
         <p style={{marginRight: '8px'}}>Week {count}</p>
-        <AiFillForward onClick={() => { if (count <= 3) { handleButtonClick() } }}/>
+        <AiFillForward onClick={() => { if (count <= 4) { handleButtonClick() } }}/>
       </div>
     </>
   )
