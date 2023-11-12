@@ -31,6 +31,6 @@ Vital consists of a web application, an API and a custom Roblox game as proof of
 The Vital app can be run locally following these steps:
 
 1. install dependencies with command ```npm install```
-2. run app with ```npm start```
+2. run app with command ```npm start```
 
 Also consider that the API for the calculations is likely going to be taken down at some point so you should host it yourself and modify the calls accrodingly. You can use the Roblox code to run the game in Roblox Studio.
