@@ -6,14 +6,17 @@ import { AiFillForward } from "react-icons/ai";
 
 import bitmojiAvatar from './images/bitmoji-avatar.png';
 import friendBitmoji from './images/friend-bitmoji.jpeg';
-import robloxAvatar from './images/roblox-avatar.png';
+// import robloxAvatar from './images/roblox-avatar.png';
 import minecraftAvatar from './images/minecraft-avatar.jpg';
 import plusSign from './images/plus-sign.svg'
 import LeIncrease from './components/LeIncrease'
 import getData from './services/getData.js'
 import postData from './services/updateRoblox.js'
 import StatsCard from './components/StatsCard';
-
+import avatar1 from './images/avatar-1.gif'
+import avatar2 from './images/avatar-2.gif'
+import avatar3 from './images/avatar-3.gif'
+import avatar4 from './images/avatar-4.gif'
 
 function App() {
   const [selectedItem, setSelectedItem] = useState(2);
@@ -25,7 +28,7 @@ function App() {
     {name: "Add Friend", image: plusSign, nativeAvatar: true, level: '-', health: '-', strength: '-', speed: '-', jumpHeight: '-', lifeExpectancy: [0, 0, 0], totalSteps: '-', totalExercise: '-', maxSpeed: '-', bmi: '-'},
     {name: "Samantha", image: friendBitmoji, nativeAvatar: true, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [8, 5, 23], totalSteps: 249485, totalExercise: 2304, maxSpeed: 28, bmi: 21},
     {name: "Jacob", image: bitmojiAvatar, nativeAvatar: true, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: '-', bmi: '-'},
-    {name: "J4c0b (Roblox)", image: robloxAvatar, nativeAvatar: false, level: 10, health: 10, strength: 10, speed: 10, jumpHeight: 10, lifeExpectancy: [0, 0, 0], totalSteps: 10, totalExercise: 10, maxSpeed: 10, bmi: '-'},
+    {name: "J4c0b (Roblox)", image: avatar1, nativeAvatar: false, level: 10, health: 10, strength: 10, speed: 10, jumpHeight: 10, lifeExpectancy: [0, 0, 0], totalSteps: 10, totalExercise: 10, maxSpeed: 10, bmi: '-'},
     {name: "Jac0b (Minecraft)", image: minecraftAvatar, nativeAvatar: false, level: 10, health: 10, strength: 10, speed: 10, jumpHeight: 10, lifeExpectancy: [0, 0, 0], totalSteps: 10, totalExercise: 10, maxSpeed: 10, bmi: '-'},
     {name: "Add Friend", image: plusSign, nativeAvatar: false, level: '-', health: '-', strength: '-', speed: '-', jumpHeight: '-', lifeExpectancy: [0, 0, 0], totalSteps: '-', totalExercise: '-', maxSpeed: '-', bmi: '-'}
   ]
@@ -86,8 +89,12 @@ function App() {
         }
         return avatar
       })
+
+      updatedAvatars[3].image = count == 1 ? avatar2 : count == 2 ? avatar3 : avatar4
       setAvatars(updatedAvatars)
+
       setCount((count) => count <= 4 ? count + 1 : count)
+
       console.log("Data Received")
       console.log(data)
       const robloxData = {
