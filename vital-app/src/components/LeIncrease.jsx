@@ -31,7 +31,7 @@ const LeIncrease = ({ years, months, days }) => {
         <h1 style={{ color: textColor, margin: 0, padding: 0 }}>{displayDays}</h1> 
         <p style={{ margin: 0, padding: 0 }}>days</p> 
       </div> 
-      <InfoButton message={"Estimated increase in life expectancy"} corner={2} />
+      <InfoButton message={"Estimated increase in life expectancy."} corner={2} />
     </div> 
   ); 
 }; 
