@@ -6,7 +6,7 @@ The issue with most attempts at gamifying exercise is that they stop working whe
 
 ### Web Application
 
-The web application is currently deployed at (https://vital-app.onrender.com/)[https://vital-app.onrender.com/].
+The web application is currently deployed at [https://vital-app.onrender.com/](https://vital-app.onrender.com/).
 
 ### Roblox Game
 
