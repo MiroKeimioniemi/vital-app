@@ -22,12 +22,12 @@ function App() {
   };
 
   const initialAvatars = [
-    {name: "Add Friend", image: plusSign, nativeAvatar: true, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: 0, bmi: 0},
-    {name: "Samantha", image: friendBitmoji, nativeAvatar: true, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: 0, bmi: 0},
-    {name: "Jacob", image: bitmojiAvatar, nativeAvatar: true, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: 0, bmi: 0},
-    {name: "J4c0b (Roblox)", image: robloxAvatar, nativeAvatar: false, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: 0, bmi: 0},
-    {name: "Jac0b (Minecraft)", image: minecraftAvatar, nativeAvatar: false, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: 0, bmi: 0},
-    {name: "Add Friend", image: plusSign, nativeAvatar: false, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: 0, bmi: 0}
+    {name: "Add Friend", image: plusSign, nativeAvatar: true, level: '-', health: '-', strength: '-', speed: '-', jumpHeight: '-', lifeExpectancy: [0, 0, 0], totalSteps: '-', totalExercise: '-', maxSpeed: '-', bmi: '-'},
+    {name: "Samantha", image: friendBitmoji, nativeAvatar: true, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [8, 5, 23], totalSteps: 249485, totalExercise: 2304, maxSpeed: 28, bmi: 21},
+    {name: "Jacob", image: bitmojiAvatar, nativeAvatar: true, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: '-', bmi: '-'},
+    {name: "J4c0b (Roblox)", image: robloxAvatar, nativeAvatar: false, level: 10, health: 10, strength: 10, speed: 10, jumpHeight: 10, lifeExpectancy: [0, 0, 0], totalSteps: 10, totalExercise: 10, maxSpeed: 10, bmi: '-'},
+    {name: "Jac0b (Minecraft)", image: minecraftAvatar, nativeAvatar: false, level: 10, health: 10, strength: 10, speed: 10, jumpHeight: 10, lifeExpectancy: [0, 0, 0], totalSteps: 10, totalExercise: 10, maxSpeed: 10, bmi: '-'},
+    {name: "Add Friend", image: plusSign, nativeAvatar: false, level: '-', health: '-', strength: '-', speed: '-', jumpHeight: '-', lifeExpectancy: [0, 0, 0], totalSteps: '-', totalExercise: '-', maxSpeed: '-', bmi: '-'}
   ]
 
   const [count, setCount] = useState(1)
@@ -70,7 +70,7 @@ function App() {
       setHealth(data.game_stats.health)
       setJumpHeight(data.game_stats.jump_height)
       const updatedAvatars = avatars.map((avatar, index) => {
-        if ([1, 2, 3, 4].includes(index)) {
+        if ([2, 3, 4].includes(index)) {
           return {
             ...avatar,
             health: data.game_stats.health,
@@ -108,7 +108,7 @@ function App() {
       <LeIncrease years={avatars[selectedItem].lifeExpectancy[0]} months={avatars[selectedItem].lifeExpectancy[1]} days={avatars[selectedItem].lifeExpectancy[2]} />
       <Carousel avatars={avatars} selected={selectedItem} onCarouselChange={handleCarouselChange} />
       <StatsCard avatar={avatars[selectedItem]} />
-      <div style={{display: 'flex', alignItems: 'center', marginTop: '0'}}>
+      <div style={{display: 'flex', alignItems: 'center', marginTop: '0', justifyContent: 'end', marginRight: '-20px'}}>
         <p style={{marginRight: '8px'}}>Week {count}</p>
         <AiFillForward onClick={() => { if (count <= 4) { handleButtonClick() } }}/>
       </div>
