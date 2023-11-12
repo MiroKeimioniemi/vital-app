@@ -30,8 +30,8 @@ function App() {
     {name: "Add Friend", image: plusSign, nativeAvatar: true, level: '-', health: '-', strength: '-', speed: '-', jumpHeight: '-', lifeExpectancy: [0, 0, 0], totalSteps: '-', totalExercise: '-', maxSpeed: '-', bmi: '-'},
     {name: "Samantha", image: friendBitmoji, nativeAvatar: true, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [8, 5, 23], totalSteps: 249485, totalExercise: 2304, maxSpeed: 28, bmi: 21},
     {name: "Jacob", image: bitmojiAvatar, nativeAvatar: true, level: 0, health: 0, strength: 0, speed: 0, jumpHeight: 0, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: '-', bmi: '-'},
-    {name: "J4c0b (Roblox)", image: avatar1, nativeAvatar: false, level: 10, health: 10, strength: 10, speed: 10, jumpHeight: 10, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: '-', bmi: '-'},
-    {name: "Jac0b (Minecraft)", image: minecraftAvatar, nativeAvatar: false, level: 10, health: 10, strength: 10, speed: 10, jumpHeight: 10, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: '-', bmi: '-'},
+    {name: "J4c0b (Roblox)", image: avatar1, nativeAvatar: false, level: 1, health: 10, strength: 10, speed: 10, jumpHeight: 10, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: '-', bmi: '-'},
+    {name: "Jac0b (Minecraft)", image: minecraftAvatar, nativeAvatar: false, level: 1, health: 10, strength: 10, speed: 10, jumpHeight: 10, lifeExpectancy: [0, 0, 0], totalSteps: 0, totalExercise: 0, maxSpeed: '-', bmi: '-'},
     {name: "Add Friend", image: plusSign, nativeAvatar: false, level: '-', health: '-', strength: '-', speed: '-', jumpHeight: '-', lifeExpectancy: [0, 0, 0], totalSteps: '-', totalExercise: '-', maxSpeed: '-', bmi: '-'}
   ]
 
@@ -78,6 +78,7 @@ function App() {
         if ([2, 3, 4].includes(index)) {
           return {
             ...avatar,
+            level: Math.round((data.game_stats.health + data.game_stats.strength + data.game_stats.speed + data.game_stats.jump_height) / 40),
             health: data.game_stats.health,
             strength: data.game_stats.strength,
             speed: data.game_stats.speed,
