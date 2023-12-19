@@ -12,6 +12,10 @@ The web application is currently deployed at [https://vital-app.onrender.com/](h
 
 The proof of concept Roblox game can be played at *insert link here*.
 
+#### Pitch
+
+The pitch and demo video can be viewed at [https://www.youtube.com/watch?v=wKWXetPiuR8](https://www.youtube.com/watch?v=wKWXetPiuR8).
+
 ## Vital App
 
 The general idea of the application is to provide a customizable digital avatar characterized by certain attributes that can be improved by consistent and balanced physical activity and healthier lifestyle in general. By default, it displays a Bitmoji avatar with an estimated increase in life expectancy calculated based on the user's health data from their smart watch, while quantifying the work done to get there by summarizing the cumulative steps, cumulative exercise time, maximum recorded running speed, and latest BMI value. This is the default screen, where swiping left will reveal the user's friends' avatars for interpersonal competition and swiping right will reveal the user's other avatars.
