@@ -28,7 +28,7 @@ In the future, the idea would be to make the API accessible to game developers s
 
 Vital consists of a web application, an API and a custom Roblox game as proof of concept for the integration. The API is responsible for obtaining and processing the data from the smart watch, which will be displayed by the app in the form of life expectancy increase, level and attributes of the avatars. The custom Roblox game receives the values for the avatar attributes and updates the player character accordingly by increasing its speed, jump height and size. The web app is built with React, the API with Python and the custom Roblox game with LUA in Roblox studio.
 
-![image](<img width="758" alt="image" src="https://github.com/MiroKeimioniemi/vital-app/assets/24809517/a2d7e83e-5790-488b-8f86-25abfc3ce5b9">)
+<img width="758" alt="Screenshot 2023-12-31 224310" src="https://github.com/MiroKeimioniemi/vital-app/assets/24809517/6380a0f2-3e29-450d-8bdb-e873df7d29d8">
 
 The web application currently has a week indicator and forward button at the bottom right corner, which can be used to simulate the passing of weeks (up to 5) and associated improvement of attributes in an accelerated manner to view how the attributes, life expectancy and level increase with sustained effort over a period of four weeks.
 
