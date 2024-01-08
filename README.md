@@ -24,11 +24,13 @@ This is done in order to appeal especially to the younger audience, who can add 
 
 In the future, the idea would be to make the API accessible to game developers so the application can be integrated with new games. Also the proposed designs for connecting with friends, viewing statistics, and sharing them for example over social media would be implemented.
 
+<img width="758" alt="Vital App UI" src="https://github.com/MiroKeimioniemi/vital-app/assets/65595542/00d06873-5f4c-4483-bc89-31eb59f931f1">
+
 ## Architecture
 
 Vital consists of a web application, an API and a custom Roblox game as proof of concept for the integration. The API is responsible for obtaining and processing the data from the smart watch, which will be displayed by the app in the form of life expectancy increase, level and attributes of the avatars. The custom Roblox game receives the values for the avatar attributes and updates the player character accordingly by increasing its speed, jump height and size. The web app is built with React, the API with Python and the custom Roblox game with LUA in Roblox studio.
 
-<img width="758" alt="Screenshot 2023-12-31 224310" src="https://github.com/MiroKeimioniemi/vital-app/assets/24809517/6380a0f2-3e29-450d-8bdb-e873df7d29d8">
+<img width="758" alt="Vital App architecture" src="https://github.com/MiroKeimioniemi/vital-app/assets/24809517/6380a0f2-3e29-450d-8bdb-e873df7d29d8">
 
 The web application currently has a week indicator and forward button at the bottom right corner, which can be used to simulate the passing of weeks (up to 5) and associated improvement of attributes in an accelerated manner to view how the attributes, life expectancy and level increase with sustained effort over a period of four weeks.
 
